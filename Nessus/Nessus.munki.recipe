@@ -20,6 +20,8 @@
 			</array>
 			<key>description</key>
 			<string>Nessus is a vulnerability assessment tool.</string>
+			<key>developer</key>
+			<string>Tenable</string>
 			<key>display_name</key>
 			<string>Nessus Agent</string>
 			<key>name</key>
