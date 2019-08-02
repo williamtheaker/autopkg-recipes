@@ -48,6 +48,8 @@
                 <dict>
                     <key>url</key>
                     <string>https://www.tenable.com/downloads/pages/61/downloads/%download_id%/download_file?i_agree_to_tenable_license_agreement=true&amp;commit=I+Agree</string>
+                    <key>CHECK_FILESIZE_ONLY</key>
+                    <true />
                     <key>filename</key>
                     <string>%NAME%-%version%.dmg</string>
                 </dict>
