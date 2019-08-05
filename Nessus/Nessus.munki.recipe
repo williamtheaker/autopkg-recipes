@@ -45,6 +45,20 @@
 	          <dict>
 	              <key>version</key>
 	              <string>%version%</string>
+								<key>installcheck_script</key>
+								<string>#!/bin/bash
+
+target_version=%version%
+
+if [ -f "/Library/NessusAgent/run/sbin/nessus-service" ]; then
+  current_version=$(/Library/NessusAgent/run/sbin/nessus-service -v | grep 'build' | awk '{print $3}')
+  if [ "$current_version" == "$target_version" ]; then
+    exit 1
+  fi
+fi
+
+exit 0
+</string>
 	          </dict>
 	      </dict>
       </dict>
