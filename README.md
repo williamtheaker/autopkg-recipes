@@ -5,3 +5,4 @@ This repo contains [AutoPkg](https://github.com/autopkg/autopkg) recipes used to
 ## Recipes
 
 * Nessus  **.download** and **.munki** recipes to grab the latest version of the macOS Tenable Nessus Agent.
+* SensibleSideButtons **.download** and **.munki** recipes to grab the latest version of SensibleSideButtons. Requires a Github API token stored at `~/.autopkg_gh_token`.
