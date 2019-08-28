@@ -25,5 +25,5 @@ jobs:
         autopkg run -vv munkitools3.munki
     - uses: actions/upload-artifact@master
       with:
-        name: my-artifact
-        path: /tmp/munki/munkitools/
+        name: pkginfo
+        path: /tmp/munki/pkgsinfo/munkitools/
