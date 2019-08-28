@@ -1,0 +1,19 @@
+name: CI
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: macOS-latest
+    
+    steps:
+    - uses: actions/checkout@v1
+    - name: Downloads AutoPkg installer
+      run: curl -O https://github.com/autopkg/autopkg/releases/download/v1.1/autopkg-1.1.pkg /tmp/autopkg.pkg
+    - name: Downloads AutoPkg installer
+      run: sudo installer -pkg /tmp/autopkg.pkg -target /
+    - name: Run a multi-line script
+      run: |
+        autopkg repo-add recipes
+        autopkg run -vv munkitools3.munki
