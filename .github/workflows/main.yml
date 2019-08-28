@@ -16,4 +16,10 @@ jobs:
     - name: Run a multi-line script
       run: |
         autopkg repo-add recipes
+        mkdir /tmp/munki
+        defaults write com.github.autopkg MUNKI_REPO /tmp/munki
         autopkg run -vv munkitools3.munki
+    - uses: actions/upload-artifact@master
+      with:
+        name: my-artifact
+        path: /tmp/munki/munkitools/
