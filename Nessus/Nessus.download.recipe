@@ -3,7 +3,7 @@
 <plist version="1.0">
     <dict>
         <key>Description</key>
-        <string>Download recipe for Nessus.</string>
+        <string>Download recipe for Tenable Nessus.</string>
         <key>Identifier</key>
         <string>com.github.williamtheaker.autopkg.download.Nessus</string>
         <key>Input</key>
@@ -21,11 +21,11 @@
               <key>Arguments</key>
               <dict>
                   <key>url</key>
-                  <string>https://www.tenable.com/products/nessus/agent-download</string>
+                  <string>https://www.tenable.com/downloads/nessus-agents</string>
                   <key>result_output_var_name</key>
                   <string>download_id</string>
                   <key>re_pattern</key>
-                  <string>data-download-id="(\d*)"(?=[\w "\-=#]*NessusAgent-[\d\.]*\.dmg)</string>
+                  <string>"id":([\d]*)(?=,"file":"NessusAgent-[\d\.]*\.dmg)</string>
               </dict>
             </dict>
            <dict>
@@ -34,7 +34,7 @@
               <key>Arguments</key>
               <dict>
                   <key>url</key>
-                  <string>https://www.tenable.com/products/nessus/agent-download</string>
+                  <string>https://www.tenable.com/downloads/nessus-agents</string>
                   <key>result_output_var_name</key>
                   <string>version</string>
                   <key>re_pattern</key>
@@ -47,7 +47,7 @@
                 <key>Arguments</key>
                 <dict>
                     <key>url</key>
-                    <string>https://www.tenable.com/downloads/pages/61/downloads/%download_id%/download_file?i_agree_to_tenable_license_agreement=true&amp;commit=I+Agree</string>
+                    <string>https://www.tenable.com/downloads/api/v1/public/pages/nessus-agents/downloads/%download_id%/download?i_agree_to_tenable_license_agreement=true</string>
                     <key>CHECK_FILESIZE_ONLY</key>
                     <true />
                     <key>filename</key>
