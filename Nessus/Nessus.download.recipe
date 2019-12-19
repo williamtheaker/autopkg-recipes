@@ -3,7 +3,7 @@
 <plist version="1.0">
     <dict>
         <key>Description</key>
-        <string>Download recipe for Nessus.</string>
+        <string>Download recipe for Tenable Nessus.</string>
         <key>Identifier</key>
         <string>com.github.williamtheaker.autopkg.download.Nessus</string>
         <key>Input</key>
