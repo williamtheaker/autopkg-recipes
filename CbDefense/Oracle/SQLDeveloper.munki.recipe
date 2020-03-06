@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+  <dict>
+    <key>Description</key>
+    <string>Recipe description</string>
+    <key>Identifier</key>
+    <string>com.github.williamtheaker.autopkg.munki.SQLDeveloper</string>
+    <key>Input</key>
+    <dict>
+      <key>NAME</key>
+      <string>SQLDeveloper</string>
+      <key>MUNKI_REPO_SUBDIR</key>
+      <string>apps</string>
+      <key>pkginfo</key>
+      <dict>
+        <key>catalogs</key>
+        <array>
+          <string>testing</string>
+        </array>
+        <key>description</key>
+        <string>Oracle SQL Developer is an integrated development environment for relational databases.</string>
+        <key>developer</key>
+        <string>Oracle</string>
+        <key>display_name</key>
+        <string>SQLDeveloper</string>
+        <key>name</key>
+        <string>%NAME%</string>
+        <key>unattended_install</key>
+        <true/>
+      </dict>
+    </dict>
+    <key>MiniumumVersion</key>
+    <string>1.0</string>
+    <key>Process</key>
+    <array>
+      <dict>
+        <key>Processor</key>
+        <string>PackageRequired</string>
+      </dict>
+      <dict>
+        <key>Processor</key>
+        <string>FileFinder</string>
+        <key>Arguments</key>
+        <dict>
+          <key>pattern</key>
+          <string>%PKG%</string>
+        </dict>
+      </dict>
+      <dict>
+        <key>Processor</key>
+        <string>Unarchiver</string>
+        <key>Arguments</key>
+        <dict>
+          <key>archive_path</key>
+          <string>%PKG%</string>
+          <key>destination_path</key>
+          <string>%RECIPE_CACHE_DIR%/%NAME%</string>
+        </dict>
+      </dict>
+    </array>
+  </dict>
+</plist>
