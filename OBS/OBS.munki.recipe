@@ -11,7 +11,7 @@
 		<key>NAME</key>
 		<string>OBS</string>
 		<key>MUNKI_REPO_SUBDIR</key>
-		<string>apps/%NAME%/</string>
+		<string>apps/obs/</string>
 		<key>pkginfo</key>
 		<dict>
 			<key>catalogs</key>
