@@ -14,7 +14,7 @@
 		<string>latest</string>
 	</dict>
 	<key>MiniumumVersion</key>
-	<string>1.0</string>
+	<string>1.4</string>
 	<key>Process</key>
 	<array>
 		<dict>
