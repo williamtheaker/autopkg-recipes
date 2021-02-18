@@ -55,7 +55,7 @@
 						 <key>input_path</key>
 						 <string>%pathname%/krita.app</string>
 						 <key>requirement</key>
-							 <string>identifier "org.krita" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "3FGDZ8C894"</string>
+							 <string>identifier "org.krita" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "5433B4KXM8"</string>
 				 </dict>
 		 </dict>
 	</array>
