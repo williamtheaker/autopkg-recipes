@@ -12,6 +12,8 @@
 		<string>10.15</string>
 		<key>CINC_VERSION</key>
 		<string>latest</string>
+		<key>ARCHITECTURE</key>
+		<string>x86_64</string>
 	</dict>
 	<key>MiniumumVersion</key>
 	<string>1.4</string>
@@ -22,15 +24,15 @@
 		  <string>URLDownloader</string>
 		  <key>Arguments</key>
 		  <dict>
-		      <key>url</key>
-		      <string>https://omnitruck.cinc.sh/stable/chef/download?p=mac_os_x&amp;pv=%MACOS_VERSION%&amp;m=x86_64&amp;v=%CINC_VERSION%</string>
-					<key>prefetch_filename</key>
-					<true/>
+			  <key>url</key>
+			  <string>https://omnitruck.cinc.sh/stable/chef/download?p=mac_os_x&amp;pv=%MACOS_VERSION%&amp;m=%ARCHITECTURE%&amp;v=%CINC_VERSION%</string>
+			  <key>prefetch_filename</key>
+			  <true/>
 		  </dict>
 		</dict>
 		<dict>
-				<key>Processor</key>
-				<string>EndOfCheckPhase</string>
+			<key>Processor</key>
+			<string>EndOfCheckPhase</string>
 		</dict>
 	</array>
 </dict>
