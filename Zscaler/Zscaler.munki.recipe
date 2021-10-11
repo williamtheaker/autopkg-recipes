@@ -26,6 +26,8 @@
 			<string>Zscaler</string>
 			<key>name</key>
 			<string>%NAME%</string>
+			<key>uninstall_method</key>
+			<string>/Applications/Zscaler/.Uninstaller.sh</string>
 			<key>unattended_install</key>
 			<true/>
 		</dict>
