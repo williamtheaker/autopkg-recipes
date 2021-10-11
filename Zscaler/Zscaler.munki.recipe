@@ -8,6 +8,37 @@
 	<string>com.github.williamtheaker.autopkg.munki.Zscaler</string>
 	<key>Input</key>
 	<dict>
+		<key>VENDOR</key>
+        <string>Zscaler</string>
+        <!--See https://help.zscaler.com/z-app/customizing-zscaler-app-install-options-macos-->
+        <!--for configuration options-->
+        <!--CLOUDNAME corresponds to the value given to the cloudName switch-->
+        <key>CLOUDNAME</key>
+        <string></string>
+        <!--DEVICETOKEN corresponds to the value given to the deviceToken switch-->
+        <key>DEVICETOKEN</key>
+        <string></string>
+        <!--HIDEAPPUIONLAUNCH corresponds to the value given to the hideAppUIOnLaunch switch-->
+        <key>HIDEAPPUIONLAUNCH</key>
+        <string></string>
+        <!--MODE corresponds to the value given to the mode switch-->
+        <key>MODE</key>
+        <string></string>
+        <!--POLICYTOKEN corresponds to the value given to the policyToken switch-->
+        <key>POLICYTOKEN</key>
+        <string></string>
+        <!--REINSTALLDRIVER corresponds to the value given to the reinstallDriver switch-->
+        <key>REINSTALLDRIVER</key>
+        <string></string>
+        <!--STRICTENFORCEMENT corresponds to the value given to the strictEnforcement switch-->
+        <key>STRICTENFORCEMENT</key>
+        <string></string>
+        <!--UNATTENDEDMODEUI corresponds to the value given to the unattendedmodeui switch-->
+        <key>UNATTENDEDMODEUI</key>
+        <string></string>
+        <!--USERDOMAIN corresponds to the value given to the userDomain switch-->
+        <key>USERDOMAIN</key>
+        <string></string>
 		<key>MUNKI_REPO_SUBDIR</key>
 		<string>apps</string>
 		<key>NAME</key>
