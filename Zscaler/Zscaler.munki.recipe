@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Downloads (not really because I need a JSON file or similar with the Zscaler release numbering) the latest version of Zscaler and imports into Munki.</string>
+	<string>Downloads the latest version of Zscaler and imports into Munki.</string>
 	<key>Identifier</key>
 	<string>com.github.williamtheaker.autopkg.munki.Zscaler</string>
 	<key>Input</key>
@@ -35,7 +35,7 @@
 	<key>MiniumumVersion</key>
 	<string>1.0</string>
 	<key>ParentRecipe</key>
-	<string>com.github.rtrouton.pkg.zscaler</string>
+	<string>com.github.williamtheaker.autopkg.download.Zscaler</string>
 	<key>Process</key>
 	<array>
 		<dict>

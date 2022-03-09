@@ -33,15 +33,6 @@
             <string>%NAME%-%version%.zip</string>
         </dict>
     </dict>
-		<dict>
-        <key>Processor</key>
-        <string>URLDownloader</string>
-        <key>Arguments</key>
-        <dict>
-            <key>filename</key>
-            <string>%NAME%-%version%.zip</string>
-        </dict>
-    </dict>
     <dict>
         <key>Processor</key>
         <string>EndOfCheckPhase</string>
