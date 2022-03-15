@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-  <dict>
+<dict>
     <key>Description</key>
     <string>Downloads the latest version of Teleport and imports into Munki.</string>
     <key>Identifier</key>
     <string>com.github.williamtheaker.autopkg.munki.Teleport</string>
     <key>Input</key>
     <dict>
-      <key>MUNKI_REPO_SUBDIR</key>
-      <string>apps</string>
-      <key>NAME</key>
-      <string>Teleport</string>
-      <key>pkginfo</key>
-      <dict>
+        <key>MUNKI_REPO_SUBDIR</key>
+        <string>apps</string>
+        <key>NAME</key>
+        <string>Teleport</string>
+        <key>pkginfo</key>
+        <dict>
         <key>catalogs</key>
         <array>
-          <string>testing</string>
+            <string>testing</string>
         </array>
         <key>description</key>
         <string>Teleport is an access management utility.</string>
@@ -28,7 +28,7 @@
         <string>%NAME%</string>
         <key>unattended_install</key>
         <true/>
-      </dict>
+        </dict>
     </dict>
     <key>MinimumVersion</key>
     <string>0.2.0</string>
@@ -36,17 +36,17 @@
     <string>com.github.williamtheaker.autopkg.download.Teleport</string>
     <key>Process</key>
     <array>
-      <dict>
+        <dict>
         <key>Processor</key>
         <string>MunkiImporter</string>
         <key>Arguments</key>
         <dict>
-          <key>pkg_path</key>
-          <string>%pathname%</string>
-          <key>repo_subdirectory</key>
-          <string>%MUNKI_REPO_SUBDIR%</string>
+            <key>pkg_path</key>
+            <string>%pathname%</string>
+            <key>repo_subdirectory</key>
+            <string>%MUNKI_REPO_SUBDIR%</string>
         </dict>
-      </dict>
+        </dict>
     </array>
-  </dict>
+</dict>
 </plist>
