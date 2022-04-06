@@ -1,0 +1,5 @@
+Description: "Recipe stub for PostProcessors in this directory."
+Identifier: com.github.williamtheaker.autopkg.postprocessors
+Input: {}
+MinimumVersion: 0.4.0
+Process: []
