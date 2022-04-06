@@ -63,7 +63,7 @@
                     <string>%pathname%/Install Nessus Agent.pkg</string>
                     <key>expected_authority_names</key>
                     <array>
-                        <string>Developer ID Installer: Tenable Network Security, Inc. (4B8J598M7U)</string>
+                        <string>Developer ID Installer: Tenable, Inc. (4B8J598M7U)</string>
                         <string>Developer ID Certification Authority</string>
                         <string>Apple Root CA</string>
                     </array>
