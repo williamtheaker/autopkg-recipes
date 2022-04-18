@@ -1,0 +1,29 @@
+Description: Downloads the latest version of CXone ScreenAgent for macOS and imports into Munki.
+Identifier: com.github.williamtheaker.autopkg.munki.ScreenAgent
+ParentRecipe: com.github.williamtheaker.autopkg.download.ScreenAgent
+MinimumVersion: "2.3" # First AutoPkg version with YAML recipe support
+
+Input:
+  NAME: CXone ScreenAgent
+  ACCESS_KEY_ID:
+  ACCESS_KEY_SECRET:
+  REGION_TYPE:
+  WEB_PROXY:
+  MUNKI_REPO_SUBDIR: apps/CXone
+  pkginfo:
+    catalogs:
+      - testing
+    description: Screen recording utility for CXone
+    developer: NICE
+    display_name: CXone ScreenAgent
+    name: "%NAME%"
+    unattended_install: true
+    postinstall_script: |
+      #!/bin/sh
+      sh /Applications/ScreenAgent.app/Contents/Resources/install-screen-agent.sh REGION_TYPE=%REGION_TYPE% ACCESS_KEY_ID=%ACCESS_KEY_ID% ACCESS_KEY_SECRET=%ACCESS_KEY_SECRET% WEB_PROXY=%WEB_PROXY%
+
+Process:
+  - Processor: MunkiImporter
+    Arguments:
+      pkg_path: "%pathname%"
+      repo_subdirectory: "%MUNKI_REPO_SUBDIR%"
