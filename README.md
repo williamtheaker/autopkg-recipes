@@ -13,3 +13,4 @@ This repo contains [AutoPkg](https://github.com/autopkg/autopkg) recipes used to
 * SensibleSideButtons **.download** and **.munki** recipes to grab the latest version of SensibleSideButtons. Requires a Github API token stored at `~/.autopkg_gh_token`.
 * Tuple **.download** and **.munki** recipes to grab the latest version of [Tuple](https://tuple.app).
 * ZoomIT **.download** and **.munki** adopted from <https://github.com/ChefAustin/chefaustin-recipes/>
+* Zscaler **.download**, **.pkg**, and **.munki** recipes download the requested version of Zscaler Client Connector. Ideally it would download the latest version each run, but Zscaler doesn't publish the version number in a public format and scraping the release notes doesn't work since they don't match the build version.

@@ -3,13 +3,15 @@
 <plist version="1.0">
 <dict>
     <key>Description</key>
-    <string>Downloads the latest version of Zscaler.</string>
+    <string>Downloads the requested version of Zscaler Client Connector.</string>
     <key>Identifier</key>
     <string>com.github.williamtheaker.autopkg.download.Zscaler</string>
     <key>Input</key>
     <dict>
         <key>NAME</key>
         <string>Zscaler</string>
+        <key>DESIRED_VERSION</key>
+        <string>3.6.1.19</string>
     </dict>
     <key>MiniumumVersion</key>
     <string>2.4.1</string>
@@ -17,24 +19,11 @@
     <array>
         <dict>
             <key>Processor</key>
-            <string>URLTextSearcher</string>
-            <key>Arguments</key>
-            <dict>
-                <key>url</key>
-                <string>https://help.zscaler.com/zapi/fetch-data?url_alias=/client-connector/client-connector-app-release-summary-2022&amp;view_type=full&amp;cloud=help.zscaler.com&amp;domain=zscaler&amp;applicable_category=2896&amp;applicable_version=all&amp;language=en&amp;_format=json</string>
-                <key>result_output_var_name</key>
-                <string>version</string>
-                <key>re_pattern</key>
-                <string>([\d\.]*)(?= for macOS)</string>
-             </dict>
-        </dict>
-        <dict>
-            <key>Processor</key>
             <string>URLDownloaderPython</string>
             <key>Arguments</key>
         <dict>
             <key>url</key>
-            <string>https://d32a6ru7mhaq0c.cloudfront.net/Zscaler-osx-%version%-installer.app.zip</string>
+            <string>https://d32a6ru7mhaq0c.cloudfront.net/Zscaler-osx-%DESIRED_VERSION%-installer.app.zip</string>
         </dict>
     </dict>
     <dict>
