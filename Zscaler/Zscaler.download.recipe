@@ -12,7 +12,7 @@
         <string>Zscaler</string>
     </dict>
     <key>MiniumumVersion</key>
-    <string>1.0</string>
+    <string>2.4.1</string>
     <key>Process</key>
     <array>
         <dict>
@@ -21,7 +21,7 @@
             <key>Arguments</key>
             <dict>
                 <key>url</key>
-                <string>https://help.zscaler.com/zapi/fetch-data?url_alias=/zscaler-client-connector/client-connector-app-release-summary-2021&amp;view_type=full&amp;applicable_category=macos&amp;_format=json</string>
+                <string>https://help.zscaler.com/zapi/fetch-data?url_alias=/client-connector/client-connector-app-release-summary-2022&amp;view_type=full&amp;cloud=help.zscaler.com&amp;domain=zscaler&amp;applicable_category=2896&amp;applicable_version=all&amp;language=en&amp;_format=json</string>
                 <key>result_output_var_name</key>
                 <string>version</string>
                 <key>re_pattern</key>
@@ -30,7 +30,7 @@
         </dict>
         <dict>
             <key>Processor</key>
-            <string>URLDownloader</string>
+            <string>URLDownloaderPython</string>
             <key>Arguments</key>
         <dict>
             <key>url</key>

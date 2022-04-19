@@ -19,7 +19,7 @@
                 <string>testing</string>
             </array>
             <key>description</key>
-            <string>Zscaler is an app to enforce secure access to enterprise applications.</string>
+            <string>Zscaler is an application for enforcing secure access to enterprise applications.</string>
             <key>developer</key>
             <string>Zscaler</string>
             <key>display_name</key>
@@ -33,29 +33,18 @@
         </dict>
     </dict>
     <key>MiniumumVersion</key>
-    <string>1.0</string>
+    <string>2.4.1</string>
     <key>ParentRecipe</key>
-    <string>com.github.williamtheaker.autopkg.download.Zscaler</string>
+    <string>com.github.williamtheaker.autopkg.pkg.Zscaler</string>
     <key>Process</key>
     <array>
-        <dict>
-            <key>Processor</key>
-            <string>DmgCreator</string>
-            <key>Arguments</key>
-            <dict>
-                <key>dmg_root</key>
-                <string>%found_filename%</string>
-                <key>dmg_path</key>
-                <string>%RECIPE_CACHE_DIR%/%NAME%-%version%.dmg</string>
-            </dict>
-        </dict>
         <dict>
             <key>Processor</key>
             <string>MunkiImporter</string>
             <key>Arguments</key>
             <dict>
                 <key>pkg_path</key>
-                <string>%dmg_path%</string>
+                <string>%pkg_path%</string>
                 <key>repo_subdirectory</key>
                 <string>%MUNKI_REPO_SUBDIR%</string>
             </dict>
