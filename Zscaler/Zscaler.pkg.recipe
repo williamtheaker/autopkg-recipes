@@ -2,14 +2,14 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>Description</key>
-	<string>Downloads the requested version of Zscaler for macOS and packages it for installation. Forked from com.github.rtrouton.pkg.zscaler.</string>
-	<key>Identifier</key>
-	<string>com.github.williamtheaker.autopkg.pkg.Zscaler</string>
-	<key>Input</key>
-	<dict>
-		<key>NAME</key>
-		<string>Zscaler</string>
+    <key>Description</key>
+    <string>Downloads the requested version of Zscaler for macOS and packages it for installation. Forked from com.github.rtrouton.pkg.zscaler.</string>
+    <key>Identifier</key>
+    <string>com.github.williamtheaker.autopkg.pkg.Zscaler</string>
+    <key>Input</key>
+    <dict>
+        <key>NAME</key>
+        <string>Zscaler</string>
         <key>VENDOR</key>
         <string>Zscaler</string>
         <!--See https://help.zscaler.com/z-app/customizing-zscaler-app-install-options-macos-->
@@ -32,6 +32,9 @@
         <!--POLICYTOKEN corresponds to the value given to the policyToken switch-->
         <key>POLICYTOKEN</key>
         <string></string>
+        <!--REINSTALLDRIVER corresponds to the value given to the reinstallDriver switch-->
+        <key>REINSTALLDRIVER</key>
+        <string></string>
         <!--STRICTENFORCEMENT corresponds to the value given to the strictEnforcement switch-->
         <key>STRICTENFORCEMENT</key>
         <string></string>
@@ -44,16 +47,16 @@
         <!--USERDOMAIN corresponds to the value given to the externalRedirect switch-->
         <key>EXTERNALREDIRECT</key>
         <string></string>
-	</dict>
-	<key>MinimumVersion</key>
-	<string>1.0.0</string>
-	<key>ParentRecipe</key>
-	<string>com.github.williamtheaker.autopkg.download.Zscaler</string>
-	<key>Process</key>
-	<array>
-		<dict>
-			<key>Processor</key>
-			<string>Versioner</string>
+    </dict>
+    <key>MinimumVersion</key>
+    <string>1.0.0</string>
+    <key>ParentRecipe</key>
+    <string>com.github.williamtheaker.autopkg.download.Zscaler</string>
+    <key>Process</key>
+    <array>
+        <dict>
+            <key>Processor</key>
+            <string>Versioner</string>
             <key>Arguments</key>
             <dict>
                <key>input_plist_path</key>
@@ -61,29 +64,29 @@
                <key>plist_version_key</key>
                <string>CFBundleShortVersionString</string>
             </dict>
-		</dict>
-		<dict>
-			<key>Processor</key>
-			<string>PkgRootCreator</string>
-			<key>Arguments</key>
-			<dict>
-				<key>pkgroot</key>
-				<string>%RECIPE_CACHE_DIR%/pkgroot</string>
-				<key>pkgdirs</key>
-				<dict/>
-			</dict>
-		</dict>
-		<dict>
-			<key>Processor</key>
-			<string>FileCreator</string>
-			<key>Arguments</key>
-			<dict>
-				<key>file_path</key>
-				<string>%RECIPE_CACHE_DIR%/Scripts/postinstall</string>
-				<key>file_mode</key>
-				<string>0755</string>
-				<key>file_content</key>
-				<string>#!/bin/bash
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>PkgRootCreator</string>
+            <key>Arguments</key>
+            <dict>
+                <key>pkgroot</key>
+                <string>%RECIPE_CACHE_DIR%/pkgroot</string>
+                <key>pkgdirs</key>
+                <dict/>
+            </dict>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>FileCreator</string>
+            <key>Arguments</key>
+            <dict>
+                <key>file_path</key>
+                <string>%RECIPE_CACHE_DIR%/Scripts/postinstall</string>
+                <key>file_mode</key>
+                <string>0755</string>
+                <key>file_content</key>
+                <string>#!/bin/bash
 
 # Script borrowed from com.github.rtrouton.pkg.zscaler
 # Determine working directory
@@ -137,46 +140,46 @@ if [[ -n "${option_9}" ]]; then
 fi
 
 if [[ -n "${option_10}" ]]; then
-    add_option10="--launchTray ${option_9} "
+    add_option10="--launchTray ${option_10} "
 fi
 
 # Install the Zscaler app and configure it
-"${install_dir}/Zscaler-osx-%version%-installer.app/Contents/MacOS/installbuilder.sh" ${add_option1}${add_option2}${add_option3}${add_option4}${add_option5}${add_option6}${add_option7}${add_option8}${add_option9}</string>
-			</dict>
-		</dict>
-		<dict>
-			<key>Processor</key>
-			<string>PkgCreator</string>
-			<key>Arguments</key>
-			<dict>
-				<key>pkg_request</key>
-				<dict>
-					<key>pkgroot</key>
-					<string>%RECIPE_CACHE_DIR%/pkgroot</string>
-					<key>pkgname</key>
-					<string>%VENDOR%_%version%</string>
-					<key>pkgtype</key>
-					<string>flat</string>
-					<key>id</key>
-					<string>com.zscaler.zscaler.pkg</string>
-					<key>version</key>
-					<string>%version%</string>
-					<key>scripts</key>
-					<string>Scripts</string>
-				</dict>
-			</dict>
-		</dict>
-		<dict>
-			<key>Processor</key>
-			<string>PathDeleter</string>
-			<key>Arguments</key>
-			<dict>
-				<key>path_list</key>
-				<array>
-					<string>%RECIPE_CACHE_DIR%/Scripts</string>
-				</array>
-			</dict>
-		</dict>
-	</array>
+"${install_dir}/Zscaler-osx-%version%-installer.app/Contents/MacOS/installbuilder.sh" ${add_option1}${add_option2}${add_option3}${add_option4}${add_option5}${add_option6}${add_option7}${add_option8}${add_option9}${add_option10}</string>
+            </dict>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>PkgCreator</string>
+            <key>Arguments</key>
+            <dict>
+                <key>pkg_request</key>
+                <dict>
+                    <key>pkgroot</key>
+                    <string>%RECIPE_CACHE_DIR%/pkgroot</string>
+                    <key>pkgname</key>
+                    <string>%NAME%-%version%</string>
+                    <key>pkgtype</key>
+                    <string>flat</string>
+                    <key>id</key>
+                    <string>com.zscaler.zscaler.pkg</string>
+                    <key>version</key>
+                    <string>%version%</string>
+                    <key>scripts</key>
+                    <string>Scripts</string>
+                </dict>
+            </dict>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>PathDeleter</string>
+            <key>Arguments</key>
+            <dict>
+                <key>path_list</key>
+                <array>
+                    <string>%RECIPE_CACHE_DIR%/Scripts</string>
+                </array>
+            </dict>
+        </dict>
+    </array>
 </dict>
 </plist>
