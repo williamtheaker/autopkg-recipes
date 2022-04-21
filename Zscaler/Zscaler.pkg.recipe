@@ -32,6 +32,9 @@
         <!--POLICYTOKEN corresponds to the value given to the policyToken switch-->
         <key>POLICYTOKEN</key>
         <string></string>
+        <!--REINSTALLDRIVER corresponds to the value given to the reinstallDriver switch-->
+        <key>REINSTALLDRIVER</key>
+        <string></string>
         <!--STRICTENFORCEMENT corresponds to the value given to the strictEnforcement switch-->
         <key>STRICTENFORCEMENT</key>
         <string></string>
