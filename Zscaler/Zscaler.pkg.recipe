@@ -157,7 +157,7 @@ fi
                     <key>pkgroot</key>
                     <string>%RECIPE_CACHE_DIR%/pkgroot</string>
                     <key>pkgname</key>
-                    <string>%VENDOR%_%version%</string>
+                    <string>%NAME%-%version%</string>
                     <key>pkgtype</key>
                     <string>flat</string>
                     <key>id</key>
