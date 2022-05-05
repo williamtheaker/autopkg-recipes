@@ -43,6 +43,21 @@
     <array>
         <dict>
             <key>Processor</key>
+            <string>MunkiInstallsItemsCreator</string>
+            <key>Arguments</key>
+            <dict>
+                <key>installs_item_paths</key>
+                <array>
+                    <string>/Applications/Zscaler/Zscaler.app</string>
+                </array>
+            </dict>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>MunkiPkginfoMerger</string>
+        </dict>
+        <dict>
+            <key>Processor</key>
             <string>MunkiImporter</string>
             <key>Arguments</key>
             <dict>
