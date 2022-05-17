@@ -5,10 +5,10 @@ MinimumVersion: "2.3" # First AutoPkg version with YAML recipe support
 
 Input:
   NAME: CXone ScreenAgent
-  ACCESS_KEY_ID:
-  ACCESS_KEY_SECRET:
-  REGION_TYPE:
-  WEB_PROXY:
+  ACCESS_KEY_ID: ""
+  ACCESS_KEY_SECRET: ""
+  REGION_TYPE: ""
+  WEB_PROXY: ""
   MUNKI_REPO_SUBDIR: apps/CXone
   pkginfo:
     catalogs:
