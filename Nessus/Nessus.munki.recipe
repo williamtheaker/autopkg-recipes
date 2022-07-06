@@ -38,6 +38,48 @@
     <array>
         <dict>
             <key>Processor</key>
+            <string>FlatPkgUnpacker</string>
+            <key>Arguments</key>
+            <dict>
+                <key>flat_pkg_path</key>
+                <string>%pathname%/.NessusAgent.pkg</string>
+                <key>destination_path</key>
+                <string>%RECIPE_CACHE_DIR%/unpack</string>
+            </dict>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>PkgPayloadUnpacker</string>
+            <key>Arguments</key>
+            <dict>
+                <key>pkg_payload_path</key>
+                <string>%RECIPE_CACHE_DIR%/unpack/Payload</string>
+                <key>destination_path</key>
+                <string>%RECIPE_CACHE_DIR%/payload</string>
+            </dict>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>MunkiInstallsItemsCreator</string>
+            <key>Arguments</key>
+            <dict>
+                <key>faux_root</key>
+                <string>%RECIPE_CACHE_DIR%/payload</string>
+                <key>installs_item_paths</key>
+                <array>
+                    <string>/Library/NessusAgent/run/sbin/nessus-service</string>
+                    <string>/Library/NessusAgent/run/sbin/nessuscli</string>
+                    <string>/Library/NessusAgent/run/sbin/nessusd</string>
+                    <string>/Library/NessusAgent/run/sbin/nessusmgt</string>
+                </array>
+            </dict>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>MunkiPkginfoMerger</string>
+        </dict>
+        <dict>
+            <key>Processor</key>
             <string>MunkiPkginfoMerger</string>
             <key>Arguments</key>
             <dict>
@@ -45,36 +87,6 @@
                 <dict>
                     <key>version</key>
                     <string>%version%</string>
-                    <key>installcheck_script</key>
-                    <string>#!/bin/zsh
-
-# binaries
-cli="/Library/NessusAgent/run/sbin/nessuscli"
-service="/Library/NessusAgent/run/sbin/nessus-service"
-
-# versions
-current_version=$($cli --version | awk 'NR==1{print $4}')
-target_version="%version%"
-
-# install status outcomes
-missing="Did not detect a Tenable Nessus install (target version: ${target_version}). Install/update needed."
-outdated="Detected an outdated Tenable Nessus (current version ${current_version}, target version: ${target_version}). Install/update needed."
-updated="Detected an up-to-date Tenable Nessus (current version: ${current_version}, target version: ${target_version}). No install/update needed."
-installed=1
-not_installed=0
-
-if [[ ! -f "$cli" ]] || [[ ! -f "$service" ]]; then
-    echo "$missing"
-    exit "$not_installed"
-elif [[ "$current_version" != "$target_version" ]]; then
-    echo "$outdated"
-    exit "$not_installed"
-elif [[ "$current_version" == "$target_version" ]]; then
-    echo "$updated"
-    exit "$installed"
-else
-    exit 0
-fi</string>
                 </dict>
             </dict>
         </dict>
