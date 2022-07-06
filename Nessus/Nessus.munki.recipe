@@ -54,7 +54,7 @@ service="/Library/NessusAgent/run/sbin/nessus-service"
 
 # versions
 current_version=$($cli --version | awk 'NR==1{print $4}')
-target_version=%version%
+target_version="%version%"
 
 # install status outcomes
 missing="Did not detect a Tenable Nessus install (target version: ${target_version}). Install/update needed."
