@@ -34,7 +34,7 @@
               <key>Arguments</key>
               <dict>
                   <key>url</key>
-                  <string>https://www.tenable.com/downloads/nessus-agents</string>
+                  <string>%url%</string>
                   <key>result_output_var_name</key>
                   <string>version</string>
                   <key>re_pattern</key>
@@ -49,7 +49,7 @@
                     <key>url</key>
                     <string>https://www.tenable.com/downloads/api/v1/public/pages/nessus-agents/downloads/%download_id%/download?i_agree_to_tenable_license_agreement=true</string>
                     <key>CHECK_FILESIZE_ONLY</key>
-                    <true />
+                    <true/>
                     <key>filename</key>
                     <string>%NAME%-%version%.dmg</string>
                 </dict>
