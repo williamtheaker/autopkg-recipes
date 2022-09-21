@@ -3,11 +3,13 @@
 <plist version="1.0">
 <dict>
     <key>Description</key>
-    <string>Recipe description</string>
+    <string>Downloads releases of Teleport specified by MAJOR_VERSION.</string>
     <key>Identifier</key>
     <string>com.github.williamtheaker.autopkg.download.Teleport</string>
     <key>Input</key>
     <dict>
+        <key>MAJOR_VERSION</key>
+        <string>10</string>
         <key>NAME</key>
         <string>Teleport</string>
     </dict>
@@ -21,7 +23,7 @@
             <key>url</key>
             <string>https://dashboard.gravitational.com/webapi/releases-oss?product=teleport&amp;page=0</string>
             <key>re_pattern</key>
-            <string>https:\/\/get.gravitational.com\/teleport-([\d\.]*).pkg</string>
+            <string>https:\/\/get.gravitational.com\/teleport-(%MAJOR_VERSION%\.[\d\.]*).pkg</string>
             <key>result_output_var_name</key>
             <string>version</string>
         </dict>
