@@ -23,7 +23,7 @@
             <key>url</key>
             <string>https://dashboard.gravitational.com/webapi/releases-oss?product=teleport&amp;page=0</string>
             <key>re_pattern</key>
-            <string>https:\/\/get.gravitational.com\/teleport-(%MAJOR_VERSION%\.[\d\.]*).pkg</string>
+            <string>https:\/\/cdn.teleport.dev\/teleport-(%MAJOR_VERSION%\.[\d\.]*).pkg</string>
             <key>result_output_var_name</key>
             <string>version</string>
         </dict>
