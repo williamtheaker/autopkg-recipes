@@ -86,6 +86,8 @@
             <dict>
                 <key>additional_pkginfo</key>
                 <dict>
+                    <key>receipts</key>
+                    <array/>
                     <key>version</key>
                     <string>%version%</string>
                     <key>installcheck_script</key>
@@ -131,24 +133,6 @@ fi
                 <string>%pathname%</string>
                 <key>repo_subdirectory</key>
                 <string>%MUNKI_REPO_SUBDIR%</string>
-            </dict>
-        </dict>
-        <dict>
-            <key>Arguments</key>
-            <dict>
-                <key>predicate</key>
-                <string>pkginfo_repo_path == ''</string>
-            </dict>
-            <key>Processor</key>
-            <string>StopProcessingIf</string>
-        </dict>
-        <dict>
-            <key>Processor</key>
-            <string>com.github.williamtheaker.SharedProcessors/MunkiReceiptsDeleter</string>
-            <key>Arguments</key>
-            <dict>
-                <key>delete_all_receipts</key>
-                <true/>
             </dict>
         </dict>
     </array>
