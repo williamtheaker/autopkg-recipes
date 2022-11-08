@@ -134,14 +134,21 @@ fi
             </dict>
         </dict>
         <dict>
-            <key>Processor</key>
-            <string>com.github.williamtheaker.MunkiReceiptsEditor/MunkiReceiptsDeleter</string>
             <key>Arguments</key>
             <dict>
-                <key>pkgs_ids</key>
-                <array>
-                    <string>com.tenablesecurity.NessusAgent.Preferences</string>
-                </array>
+                <key>predicate</key>
+                <string>pkginfo_repo_path == ''</string>
+            </dict>
+            <key>Processor</key>
+            <string>StopProcessingIf</string>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>com.github.williamtheaker.MunkiReceiptsDeleter</string>
+            <key>Arguments</key>
+            <dict>
+                <key>delete_all_receipts</key>
+                <true/>
             </dict>
         </dict>
     </array>

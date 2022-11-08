@@ -1,5 +1,20 @@
 #!/usr/bin/env python
 
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+# https://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# Mostly stolen and modified from:
+# https://github.com/autopkg/autopkg/blob/master/Code/autopkglib/MunkiOptionalReceiptEditor.py
+
 import plistlib
 
 from autopkglib import Processor, ProcessorError
@@ -11,6 +26,10 @@ class MunkiReceiptsDeleter(Processor):
     """Modifies the receipts key in a Munki pkginfo."""
 
     input_variables = {
+        "delete_all_receipts": {
+            "required": True,
+            "description": "Delete the entire receipts array.",
+        },
         "pkg_ids": {
             "required": False,
             "description": "Array of receipt package IDs to delete.",
@@ -31,21 +50,26 @@ class MunkiReceiptsDeleter(Processor):
         with open(self.env["pkginfo_repo_path"], "rb") as f:
             pkginfo = plistlib.load(f)
 
-        receipts_deleted = []
+        receipts_deleted = False
+
         if "receipts" in pkginfo.keys():
-            for i, receipt in enumerate(pkginfo["receipts"]):
-                # made optional any pkginfos
-                if receipt["packageid"] in self.env["delete_receipts"]:
-                    pkginfo["receipts"][i] = None
-                    self.output(
-                        f"Setting package ID {receipt['packageid']} as optional"
-                    )
-                    receipts_deleted.append(receipt["packageid"])
+            if self.env["delete_all_receipts"]:
+                pkginfo.pop("receipts")
+                self.output("Removing entire receipts array from pkginfo.")
+                receipts_deleted = True
+            else:
+                for i, receipt in enumerate(pkginfo["receipts"]):
+                    if receipt["packageid"] in self.env["pkg_ids"]:
+                        pkginfo["receipts"].pop(i)
+                        self.output(
+                            f"Marking receipt {receipt['packageid']} for deletion"
+                        )
+                        receipts_deleted = True
         else:
             raise ProcessorError("pkginfo does not contain any receipts")
 
-        if len(receipts_deleted) > 0:
-            self.output(f"Writing pkginfo to {self.env['pkginfo_repo_path']}")
+        if receipts_deleted:
+            self.output(f"Writing updated pkginfo to {self.env['pkginfo_repo_path']}")
             with open(self.env["pkginfo_repo_path"], "wb") as f:
                 plistlib.dump(pkginfo, f)
         else:
