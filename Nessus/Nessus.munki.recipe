@@ -144,7 +144,7 @@ fi
         </dict>
         <dict>
             <key>Processor</key>
-            <string>com.github.williamtheaker.MunkiReceiptsDeleter</string>
+            <string>com.github.williamtheaker.SharedProcessors/MunkiReceiptsDeleter</string>
             <key>Arguments</key>
             <dict>
                 <key>delete_all_receipts</key>

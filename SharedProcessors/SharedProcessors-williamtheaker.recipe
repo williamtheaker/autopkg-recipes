@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Stub recipe to refer to the MunkiReceiptsDeleter shared processor.</string>
+	<string>Stub recipe to refer to shared processors.</string>
 	<key>Identifier</key>
-	<string>com.github.williamtheaker.MunkiReceiptsDeleter</string>
+	<string>com.github.williamtheaker.SharedProcessors</string>
 	<key>Input</key>
 	<dict/>
 	<key>MinimumVersion</key>
