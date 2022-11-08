@@ -83,6 +83,8 @@ fi</string>
             <string>MunkiImporter</string>
             <key>Arguments</key>
             <dict>
+                <key>force_munkiimport</key>
+                <true/>
                 <key>pkg_path</key>
                 <string>%pathname%</string>
                 <key>repo_subdirectory</key>
