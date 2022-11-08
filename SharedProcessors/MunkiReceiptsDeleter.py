@@ -23,7 +23,7 @@ __all__ = ["MunkiReceiptsDeleter"]
 
 
 class MunkiReceiptsDeleter(Processor):
-    """Modifies the receipts key in a Munki pkginfo."""
+    """Deletes the receipts keys in a Munki pkginfo as specified."""
 
     input_variables = {
         "delete_all_receipts": {
