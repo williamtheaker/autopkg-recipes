@@ -38,11 +38,56 @@
     <array>
         <dict>
             <key>Processor</key>
+            <string>FlatPkgUnpacker</string>
+            <key>Arguments</key>
+            <dict>
+                <key>flat_pkg_path</key>
+                <string>%pathname%/.NessusAgent.pkg</string>
+                <key>destination_path</key>
+                <string>%RECIPE_CACHE_DIR%/unpack</string>
+            </dict>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>PkgPayloadUnpacker</string>
+            <key>Arguments</key>
+            <dict>
+                <key>pkg_payload_path</key>
+                <string>%RECIPE_CACHE_DIR%/unpack/Payload</string>
+                <key>destination_path</key>
+                <string>%RECIPE_CACHE_DIR%/payload</string>
+            </dict>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>MunkiInstallsItemsCreator</string>
+            <key>Arguments</key>
+            <dict>
+                <key>faux_root</key>
+                <string>%RECIPE_CACHE_DIR%/payload</string>
+                <key>installs_item_paths</key>
+                <array>
+                    <string>/Library/NessusAgent/run/bin/nasl</string>
+                    <string>/Library/NessusAgent/run/sbin/nessus-agent-module</string>
+                    <string>/Library/NessusAgent/run/sbin/nessus-service</string>
+                    <string>/Library/NessusAgent/run/sbin/nessusd</string>
+                    <string>/Library/NessusAgent/run/sbin/nessusmgt</string>
+                </array>
+            </dict>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>MunkiPkginfoMerger</string>
+        </dict>
+        <dict>
+            <key>Processor</key>
             <string>MunkiPkginfoMerger</string>
             <key>Arguments</key>
             <dict>
                 <key>additional_pkginfo</key>
                 <dict>
+                    <key>receipts</key>
+                    <array/>
                     <key>version</key>
                     <string>%version%</string>
                     <key>installcheck_script</key>
@@ -74,7 +119,8 @@ elif [[ "$current_version" == "$target_version" ]]; then
     exit "$installed"
 else
     exit 0
-fi</string>
+fi
+                    </string>
                 </dict>
             </dict>
         </dict>
