@@ -11,7 +11,7 @@
         <key>NAME</key>
         <string>Zscaler</string>
         <key>DESIRED_VERSION</key>
-        <string>3.6.1.19</string>
+        <string>3.7.0.176</string>
     </dict>
     <key>MiniumumVersion</key>
     <string>2.4.1</string>
@@ -19,19 +19,19 @@
     <array>
         <dict>
             <key>Processor</key>
-            <string>URLDownloaderPython</string>
+            <string>URLDownloader</string>
             <key>Arguments</key>
         <dict>
             <key>url</key>
             <string>https://d32a6ru7mhaq0c.cloudfront.net/Zscaler-osx-%DESIRED_VERSION%-installer.app.zip</string>
         </dict>
-    </dict>
-    <dict>
-        <key>Processor</key>
-        <string>EndOfCheckPhase</string>
-        <key>Comment</key>
-        <string>End new version phase.</string>
-    </dict>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>EndOfCheckPhase</string>
+            <key>Comment</key>
+            <string>End new version phase.</string>
+        </dict>
         <dict>
             <key>Processor</key>
             <string>Unarchiver</string>

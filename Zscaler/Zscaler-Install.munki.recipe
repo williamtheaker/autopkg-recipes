@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
     <key>Description</key>
-    <string>Downloads the requested version of Zscaler, packages, and imports it into Munki.</string>
+    <string>Downloads the requested version of Zscaler, installs it, and imports into Munki.</string>
     <key>Identifier</key>
     <string>com.github.williamtheaker.autopkg.munki.Zscaler</string>
     <key>Input</key>
@@ -38,9 +38,24 @@
     <key>MiniumumVersion</key>
     <string>2.4.1</string>
     <key>ParentRecipe</key>
-    <string>com.github.williamtheaker.autopkg.pkg.Zscaler</string>
+    <string>com.github.williamtheaker.autopkg.install.Zscaler</string>
     <key>Process</key>
     <array>
+        <dict>
+            <key>Processor</key>
+            <string>MunkiInstallsItemsCreator</string>
+            <key>Arguments</key>
+            <dict>
+                <key>installs_item_paths</key>
+                <array>
+                    <string>/Applications/Zscaler/Zscaler.app</string>
+                </array>
+            </dict>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>MunkiPkginfoMerger</string>
+        </dict>
         <dict>
             <key>Processor</key>
             <string>MunkiImporter</string>
