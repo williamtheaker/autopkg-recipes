@@ -5,7 +5,7 @@
     <key>Description</key>
     <string>Downloads the requested version of Zscaler, installs it, and imports into Munki.</string>
     <key>Identifier</key>
-    <string>com.github.williamtheaker.autopkg.munki.Zscaler</string>
+    <string>com.github.williamtheaker.autopkg.munki.Zscaler-Install</string>
     <key>Input</key>
     <dict>
         <key>MUNKI_REPO_SUBDIR</key>
