@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
     <key>Description</key>
-    <string>Downloads the requested version of Zscaler for macOS and packages it for installation. Forked from com.github.rtrouton.pkg.zscaler.</string>
+    <string>Downloads the requested version of Zscaler and packages it.</string>
     <key>Identifier</key>
     <string>com.github.williamtheaker.autopkg.pkg.Zscaler</string>
     <key>Input</key>

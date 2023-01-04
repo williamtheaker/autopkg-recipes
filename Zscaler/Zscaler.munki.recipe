@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
     <key>Description</key>
-    <string>Downloads the requested version of Zscaler and imports into Munki.</string>
+    <string>Downloads the requested version of Zscaler, packages, and imports it into Munki.</string>
     <key>Identifier</key>
     <string>com.github.williamtheaker.autopkg.munki.Zscaler</string>
     <key>Input</key>
