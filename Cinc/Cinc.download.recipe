@@ -9,14 +9,14 @@
 	<key>Input</key>
 	<dict>
 		<key>MACOS_VERSION</key>
-		<string>10.15</string>
+		<string>11</string>
 		<key>CINC_VERSION</key>
 		<string>latest</string>
 		<key>ARCHITECTURE</key>
 		<string>x86_64</string>
 	</dict>
 	<key>MiniumumVersion</key>
-	<string>1.4</string>
+	<string>1.0</string>
 	<key>Process</key>
 	<array>
 		<dict>

@@ -14,26 +14,26 @@
 		<string>apps</string>
 		<key>pkginfo</key>
 		<dict>
-		<key>catalogs</key>
-			<array>
-				<string>testing</string>
-			</array>
-		<key>description</key>
-		<string>Cinc is a free/libre distribution of Chef.</string>
-		<key>developer</key>
-		<string>Cinc</string>
-		<key>display_name</key>
-		<string>Cinc Client</string>
-		<key>name</key>
-		<string>%NAME%</string>
-		<key>unattended_install</key>
-		<true/>
-	</dict>
+			<key>catalogs</key>
+				<array>
+					<string>testing</string>
+				</array>
+			<key>description</key>
+			<string>Cinc is a free/libre distribution of Chef.</string>
+			<key>developer</key>
+			<string>Cinc</string>
+			<key>display_name</key>
+			<string>Cinc Client</string>
+			<key>name</key>
+			<string>%NAME%</string>
+			<key>unattended_install</key>
+			<true/>
+		</dict>
 	</dict>
 	<key>MiniumumVersion</key>
 	<string>1.0</string>
 	<key>ParentRecipe</key>
-	<string>com.github.williamtheaker.autopkg.download.cinc</string>
+	<string>com.github.williamtheaker.autopkg.pkg.cinc</string>
 	<key>Process</key>
 	<array>
 		<dict>
