@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Downloads the latest Cinc installer for macOS.</string>
+	<string>Downloads the latest Cinc installer for macOS and copies to a versioned package.</string>
 	<key>Identifier</key>
 	<string>com.github.williamtheaker.autopkg.pkg.cinc</string>
 	<key>Input</key>
