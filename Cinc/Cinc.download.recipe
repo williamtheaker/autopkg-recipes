@@ -2,38 +2,38 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>Description</key>
-	<string>Downloads the latest Cinc installer for macOS.</string>
-	<key>Identifier</key>
-	<string>com.github.williamtheaker.autopkg.download.cinc</string>
-	<key>Input</key>
-	<dict>
-		<key>MACOS_VERSION</key>
-		<string>10.15</string>
-		<key>CINC_VERSION</key>
-		<string>latest</string>
-		<key>ARCHITECTURE</key>
-		<string>x86_64</string>
-	</dict>
-	<key>MiniumumVersion</key>
-	<string>1.4</string>
-	<key>Process</key>
-	<array>
-		<dict>
-		  <key>Processor</key>
-		  <string>URLDownloader</string>
-		  <key>Arguments</key>
-		  <dict>
-			  <key>url</key>
-			  <string>https://omnitruck.cinc.sh/stable/chef/download?p=mac_os_x&amp;pv=%MACOS_VERSION%&amp;m=%ARCHITECTURE%&amp;v=%CINC_VERSION%</string>
-			  <key>prefetch_filename</key>
-			  <true/>
-		  </dict>
-		</dict>
-		<dict>
-			<key>Processor</key>
-			<string>EndOfCheckPhase</string>
-		</dict>
-	</array>
+    <key>Description</key>
+    <string>Downloads the latest Cinc installer version.</string>
+    <key>Identifier</key>
+    <string>com.github.williamtheaker.autopkg.download.cinc</string>
+    <key>Input</key>
+    <dict>
+        <key>MACOS_VERSION</key>
+        <string>11</string>
+        <key>CINC_VERSION</key>
+        <string>latest</string>
+        <key>ARCHITECTURE</key>
+        <string>x86_64</string>
+    </dict>
+    <key>MiniumumVersion</key>
+    <string>1.0</string>
+    <key>Process</key>
+    <array>
+        <dict>
+          <key>Processor</key>
+          <string>URLDownloader</string>
+          <key>Arguments</key>
+          <dict>
+              <key>url</key>
+              <string>https://omnitruck.cinc.sh/stable/chef/download?p=mac_os_x&amp;pv=%MACOS_VERSION%&amp;m=%ARCHITECTURE%&amp;v=%CINC_VERSION%</string>
+              <key>prefetch_filename</key>
+              <true/>
+          </dict>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>EndOfCheckPhase</string>
+        </dict>
+    </array>
 </dict>
 </plist>
