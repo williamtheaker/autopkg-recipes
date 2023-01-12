@@ -2,51 +2,51 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>Description</key>
-	<string>Downloads the latest Cinc installer version, copies a versioned package, and imports into Munki.</string>
-	<key>Identifier</key>
-	<string>com.github.williamtheaker.autopkg.munki.cinc</string>
-	<key>Input</key>
-	<dict>
-		<key>NAME</key>
-		<string>cinc</string>
-		<key>MUNKI_REPO_SUBDIR</key>
-		<string>apps</string>
-		<key>pkginfo</key>
-		<dict>
-			<key>catalogs</key>
-				<array>
-					<string>testing</string>
-				</array>
-			<key>description</key>
-			<string>Cinc is a free/libre distribution of Chef.</string>
-			<key>developer</key>
-			<string>Cinc</string>
-			<key>display_name</key>
-			<string>Cinc Client</string>
-			<key>name</key>
-			<string>%NAME%</string>
-			<key>supported_architectures</key>
-			<array>
-				<string>%ARCHITECTURE%</string>
-			</array>
-			<key>unattended_install</key>
-			<true/>
-		</dict>
-	</dict>
-	<key>MiniumumVersion</key>
-	<string>1.0</string>
-	<key>ParentRecipe</key>
-	<string>com.github.williamtheaker.autopkg.pkg.cinc</string>
-	<key>Process</key>
-	<array>
-		<dict>
-			<key>Arguments</key>
-			<dict>
-				<key>additional_pkginfo</key>
-				<dict>
-					<key>installcheck_script</key>
-					<string>#!/usr/local/munki/munki-python
+    <key>Description</key>
+    <string>Downloads the latest Cinc installer version, copies a versioned package, and imports into Munki.</string>
+    <key>Identifier</key>
+    <string>com.github.williamtheaker.autopkg.munki.cinc</string>
+    <key>Input</key>
+    <dict>
+        <key>NAME</key>
+        <string>cinc</string>
+        <key>MUNKI_REPO_SUBDIR</key>
+        <string>apps</string>
+        <key>pkginfo</key>
+        <dict>
+            <key>catalogs</key>
+                <array>
+                    <string>testing</string>
+                </array>
+            <key>description</key>
+            <string>Cinc is a free/libre distribution of Chef.</string>
+            <key>developer</key>
+            <string>Cinc</string>
+            <key>display_name</key>
+            <string>Cinc Client</string>
+            <key>name</key>
+            <string>%NAME%</string>
+            <key>supported_architectures</key>
+            <array>
+                <string>%ARCHITECTURE%</string>
+            </array>
+            <key>unattended_install</key>
+            <true/>
+        </dict>
+    </dict>
+    <key>MiniumumVersion</key>
+    <string>1.0</string>
+    <key>ParentRecipe</key>
+    <string>com.github.williamtheaker.autopkg.pkg.cinc</string>
+    <key>Process</key>
+    <array>
+        <dict>
+            <key>Arguments</key>
+            <dict>
+                <key>additional_pkginfo</key>
+                <dict>
+                    <key>installcheck_script</key>
+                    <string>#!/usr/local/munki/munki-python
 
 import os
 import plistlib
@@ -65,98 +65,98 @@ NOT_INSTALLED = 0
 
 
 def is_arm64():
-	cmd = shell_out(
-		["/usr/sbin/sysctl", "-n", "machdep.cpu.brand_string"],
-		check=True,
-		capture_output=True,
-	)
-	return cmd.stdout and "Apple" in str(cmd.stdout)
+    cmd = shell_out(
+        ["/usr/sbin/sysctl", "-n", "machdep.cpu.brand_string"],
+        check=True,
+        capture_output=True,
+    )
+    return cmd.stdout and "Apple" in str(cmd.stdout)
 
 
 ARM64 = is_arm64()
 
 
 def is_installed():
-	for path in [CINC_PATH, RUBY_PATH]:
-		if not os.path.exists(path):
-			return False
-	return True
+    for path in [CINC_PATH, RUBY_PATH]:
+        if not os.path.exists(path):
+            return False
+    return True
 
 
 def is_correct_version():
-	cmd = shell_out(
-		["/usr/sbin/pkgutil", "--pkg-info-plist", RECEIPT], capture_output=True
-	)
-	if cmd.returncode != 0:
-		return False
-	installed_version = plistlib.loads(cmd.stdout)["pkg-version"]
-	if version(installed_version) &lt; version(CINC_VERSION):
-		return False
-	return True
+    cmd = shell_out(
+        ["/usr/sbin/pkgutil", "--pkg-info-plist", RECEIPT], capture_output=True
+    )
+    if cmd.returncode != 0:
+        return False
+    installed_version = plistlib.loads(cmd.stdout)["pkg-version"]
+    if version(installed_version) &lt; version(CINC_VERSION):
+        return False
+    return True
 
 
 def is_correct_arch():
-	cmd = shell_out(["/usr/bin/file", f"{RUBY_PATH}"], check=True, capture_output=True)
-	return cmd.stdout and (
-		(ARM64 and "arm64" in str(cmd.stdout))
-		or (not ARM64 and not "arm64" in str(cmd.stdout))
-	)
+    cmd = shell_out(["/usr/bin/file", f"{RUBY_PATH}"], check=True, capture_output=True)
+    return cmd.stdout and (
+        (ARM64 and "arm64" in str(cmd.stdout))
+        or (not ARM64 and not "arm64" in str(cmd.stdout))
+    )
 
 
 def recently_run():
-	epoch_time = int(time.time())
-	return (epoch_time - int(os.path.getctime(CINC_PATH))) &lt; 86400 or (
-		epoch_time - int(os.path.getmtime(LOG_PATH))
-	) &lt; 345600
+    epoch_time = int(time.time())
+    return (epoch_time - int(os.path.getctime(CINC_PATH))) &lt; 86400 or (
+        epoch_time - int(os.path.getmtime(LOG_PATH))
+    ) &lt; 345600
 
 
 def did_not_crash():
-	cmd = shell_out(
-		["/usr/bin/tail", "-20", f"{LOG_PATH}"], check=True, capture_output=True
-	)
-	return cmd.stdout and not "FATAL:" in str(cmd.stdout)
+    cmd = shell_out(
+        ["/usr/bin/tail", "-20", f"{LOG_PATH}"], check=True, capture_output=True
+    )
+    return cmd.stdout and not "FATAL:" in str(cmd.stdout)
 
 
 print("cinc-installcheck_script: Detecting installation and health of cinc-client.")
 if (
-	is_installed()
-	and is_correct_version()
-	and is_correct_arch()
-	and recently_run()
-	and did_not_crash()
+    is_installed()
+    and is_correct_version()
+    and is_correct_arch()
+    and recently_run()
+    and did_not_crash()
 ):
-	print(f"cinc-installcheck_script: cinc-client {CINC_VERSION} (or newer) is already installed and healthy.")
-	sys.exit(INSTALLED)
+    print(f"cinc-installcheck_script: cinc-client {CINC_VERSION} (or newer) is already installed and healthy.")
+    sys.exit(INSTALLED)
 elif not is_installed():
-	print("cinc-installcheck_script: cinc-client is not (fully) installed.")
+    print("cinc-installcheck_script: cinc-client is not (fully) installed.")
 elif not is_correct_version():
-	print(f"cinc-installcheck_script: cinc version {CINC_VERSION} (or newer) is not installed.")
+    print(f"cinc-installcheck_script: cinc version {CINC_VERSION} (or newer) is not installed.")
 elif not is_correct_arch():
-	print("cinc-installcheck_script: cinc-client build is of wrong arch.")
+    print("cinc-installcheck_script: cinc-client build is of wrong arch.")
 elif not recently_run():
-	print("cinc-installcheck_script: cinc-client has not been run recently.")
+    print("cinc-installcheck_script: cinc-client has not been run recently.")
 elif not did_not_crash():
-	print("cinc-installcheck_script: cinc-client has crashed recently.")
+    print("cinc-installcheck_script: cinc-client has crashed recently.")
 else:
-	print("cinc-installcheck_script: this condition should never be executed - programmer error.")
+    print("cinc-installcheck_script: this condition should never be executed - programmer error.")
 
 sys.exit(NOT_INSTALLED)</string>
-				</dict>
-			</dict>
-			<key>Processor</key>
-			<string>MunkiPkginfoMerger</string>
-		</dict>
-		<dict>
-			<key>Arguments</key>
-			<dict>
-				<key>pkg_path</key>
-				<string>%pkg_path%</string>
-				<key>repo_subdirectory</key>
-				<string>%MUNKI_REPO_SUBDIR%</string>
-			</dict>
-			<key>Processor</key>
-			<string>MunkiImporter</string>
-		</dict>
-	</array>
+                </dict>
+            </dict>
+            <key>Processor</key>
+            <string>MunkiPkginfoMerger</string>
+        </dict>
+        <dict>
+            <key>Arguments</key>
+            <dict>
+                <key>pkg_path</key>
+                <string>%pkg_path%</string>
+                <key>repo_subdirectory</key>
+                <string>%MUNKI_REPO_SUBDIR%</string>
+            </dict>
+            <key>Processor</key>
+            <string>MunkiImporter</string>
+        </dict>
+    </array>
 </dict>
 </plist>
