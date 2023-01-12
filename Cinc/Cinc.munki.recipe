@@ -125,16 +125,12 @@ if (
 	and recently_run()
 	and did_not_crash()
 ):
-	print(
-		f"cinc-installcheck_script: cinc-client {CINC_VERSION} (or newer) is already installed and healthy."
-	)
+	print(f"cinc-installcheck_script: cinc-client {CINC_VERSION} (or newer) is already installed and healthy.")
 	sys.exit(INSTALLED)
 elif not is_installed():
 	print("cinc-installcheck_script: cinc-client is not (fully) installed.")
 elif not is_correct_version():
-	print(
-		f"cinc-installcheck_script: cinc version {CINC_VERSION} (or newer) is not installed."
-	)
+	print(f"cinc-installcheck_script: cinc version {CINC_VERSION} (or newer) is not installed.")
 elif not is_correct_arch():
 	print("cinc-installcheck_script: cinc-client build is of wrong arch.")
 elif not recently_run():
@@ -142,9 +138,7 @@ elif not recently_run():
 elif not did_not_crash():
 	print("cinc-installcheck_script: cinc-client has crashed recently.")
 else:
-	print(
-		"cinc-installcheck_script: this condition should never be executed - programmer error."
-	)
+	print("cinc-installcheck_script: this condition should never be executed - programmer error.")
 
 sys.exit(NOT_INSTALLED)</string>
 				</dict>
