@@ -105,9 +105,10 @@ def is_correct_arch():
 
 def recently_run():
     epoch_time = int(time.time())
-    return (epoch_time - int(os.path.getctime(CINC_PATH))) &lt; 86400 or (
-        epoch_time - int(os.path.getmtime(LOG_PATH))
-    ) &lt; 345600
+    return (epoch_time - int(os.path.getctime(CINC_PATH)) &lt; 86400) or (
+        os.path.isfile(LOG_PATH)
+        and epoch_time - int(os.path.getmtime(LOG_PATH)) &lt; 345600
+    )
 
 
 def did_not_crash():
