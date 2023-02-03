@@ -115,7 +115,7 @@ def did_not_crash():
     cmd = shell_out(
         ["/usr/bin/tail", "-20", f"{LOG_PATH}"], check=True, capture_output=True
     )
-    return cmd.stdout and not "FATAL:" in str(cmd.stdout)
+    return os.path.isfile(LOG_PATH) and cmd.stdout and not "FATAL:" in str(cmd.stdout)
 
 
 print("cinc-installcheck_script: Detecting installation and health of cinc-client.")
