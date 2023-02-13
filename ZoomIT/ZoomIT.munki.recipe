@@ -32,6 +32,10 @@
             <string>%NAME%</string>
             <key>unattended_install</key>
             <true/>
+            <key>postuninstall_script</key>
+            <string>#!/bin/sh
+rm -rf /Applications/zoom.us.app
+            </string>
         </dict>
     </dict>
     <key>MinimumVersion</key>
@@ -46,7 +50,7 @@
             <key>Arguments</key>
             <dict>
                 <key>faux_root</key>
-                <string>%RECIPE_CACHE_DIR%/%NAME%</string>
+                <string>%RECIPE_CACHE_DIR%/unpack</string>
                 <key>installs_item_paths</key>
                 <array>
                     <string>/Applications/zoom.us.app</string>
@@ -55,6 +59,10 @@
                 <string>CFBundleVersion</string>
             </dict>
         </dict>
+		<dict>
+			<key>Processor</key>
+			<string>MunkiPkginfoMerger</string>
+		</dict>
         <dict>
             <key>Processor</key>
             <string>MunkiPkginfoMerger</string>
