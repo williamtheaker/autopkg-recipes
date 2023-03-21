@@ -50,10 +50,10 @@
 
 import os
 import plistlib
+import subprocess
 import sys
 import time
 from distutils.version import LooseVersion as version
-from subprocess import run as shell_out
 
 CINC_VERSION = "%version%"
 CINC_PATH = "/opt/cinc/bin/cinc-client"
@@ -64,8 +64,8 @@ INSTALLED = 1
 NOT_INSTALLED = 0
 
 
-def is_arm64():
-    cmd = shell_out(
+def arm64():
+    cmd = subprocess.run(
         ["/usr/sbin/sysctl", "-n", "machdep.cpu.brand_string"],
         check=True,
         capture_output=True,
@@ -73,18 +73,15 @@ def is_arm64():
     return cmd.stdout and "Apple" in str(cmd.stdout)
 
 
-ARM64 = is_arm64()
-
-
-def is_installed():
+def installed():
     for path in [CINC_PATH, RUBY_PATH]:
         if not os.path.exists(path):
             return False
     return True
 
 
-def is_correct_version():
-    cmd = shell_out(
+def correct_version():
+    cmd = subprocess.run(
         ["/usr/sbin/pkgutil", "--pkg-info-plist", RECEIPT], capture_output=True
     )
     if cmd.returncode != 0:
@@ -95,11 +92,15 @@ def is_correct_version():
     return True
 
 
-def is_correct_arch():
-    cmd = shell_out(["/usr/bin/file", f"{RUBY_PATH}"], check=True, capture_output=True)
+def correct_arch():
+    arm = arm64()
+
+    cmd = subprocess.run(
+        ["/usr/bin/file", f"{RUBY_PATH}"], check=True, capture_output=True
+    )
     return cmd.stdout and (
-        (ARM64 and "arm64" in str(cmd.stdout))
-        or (not ARM64 and not "arm64" in str(cmd.stdout))
+        (arm and "arm64" in str(cmd.stdout))
+        or (not arm and not "arm64" in str(cmd.stdout))
     )
 
 
@@ -112,34 +113,34 @@ def recently_run():
 
 
 def did_not_crash():
-    cmd = shell_out(
-        ["/usr/bin/tail", "-20", f"{LOG_PATH}"], check=True, capture_output=True
-    )
+    cmd = subprocess.run(["/usr/bin/tail", "-20", f"{LOG_PATH}"], capture_output=True)
     return os.path.isfile(LOG_PATH) and cmd.stdout and not "FATAL:" in str(cmd.stdout)
 
 
 print("cinc-installcheck_script: Detecting installation and health of cinc-client.")
 if (
-    is_installed()
-    and is_correct_version()
-    and is_correct_arch()
+    installed()
+    and correct_version()
+    and correct_arch()
     and recently_run()
     and did_not_crash()
 ):
-    print(f"cinc-installcheck_script: cinc-client {CINC_VERSION} (or newer) is already installed and healthy.")
+    print(
+        f"cinc-installcheck_script: cinc-client {CINC_VERSION} (or newer) is already installed and healthy."
+    )
     sys.exit(INSTALLED)
-elif not is_installed():
+elif not installed():
     print("cinc-installcheck_script: cinc-client is not (fully) installed.")
-elif not is_correct_version():
-    print(f"cinc-installcheck_script: cinc version {CINC_VERSION} (or newer) is not installed.")
-elif not is_correct_arch():
+elif not correct_version():
+    print(
+        f"cinc-installcheck_script: cinc version {CINC_VERSION} (or newer) is not installed."
+    )
+elif not correct_arch():
     print("cinc-installcheck_script: cinc-client build is of wrong arch.")
 elif not recently_run():
     print("cinc-installcheck_script: cinc-client has not been run recently.")
 elif not did_not_crash():
     print("cinc-installcheck_script: cinc-client has crashed recently.")
-else:
-    print("cinc-installcheck_script: this condition should never be executed - programmer error.")
 
 sys.exit(NOT_INSTALLED)</string>
                 </dict>
