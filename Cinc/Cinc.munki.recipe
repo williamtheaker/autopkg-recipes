@@ -53,7 +53,8 @@ import plistlib
 import subprocess
 import sys
 import time
-from distutils.version import LooseVersion as version
+
+from pkg_resources import parse_version as version
 
 CINC_VERSION = "%version%"
 CINC_PATH = "/opt/cinc/bin/cinc-client"
