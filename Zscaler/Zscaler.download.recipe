@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
     <key>Description</key>
-    <string>Downloads the requested version of Zscaler Client Connector.</string>
+    <string>Downloads the requested version of Zscaler.</string>
     <key>Identifier</key>
     <string>com.github.williamtheaker.autopkg.download.Zscaler</string>
     <key>Input</key>
@@ -11,7 +11,7 @@
         <key>NAME</key>
         <string>Zscaler</string>
         <key>DESIRED_VERSION</key>
-        <string>3.7.0.176</string>
+        <string>3.9.0.109</string>
     </dict>
     <key>MiniumumVersion</key>
     <string>2.4.1</string>
@@ -19,40 +19,20 @@
     <array>
         <dict>
             <key>Processor</key>
-            <string>URLDownloader</string>
+            <string>URLDownloaderPython</string>
             <key>Arguments</key>
-        <dict>
-            <key>url</key>
-            <string>https://d32a6ru7mhaq0c.cloudfront.net/Zscaler-osx-%DESIRED_VERSION%-installer.app.zip</string>
-        </dict>
+            <dict>
+                <key>COMPUTE_HASHES</key>
+                <true/>
+                <key>filename</key>
+                <string>Zscaler-%DESIRED_VERSION%.pkg</string>
+                <key>url</key>
+                <string>https://d32a6ru7mhaq0c.cloudfront.net/Zscaler-osx-%DESIRED_VERSION%-installer.pkg</string>
+            </dict>
         </dict>
         <dict>
             <key>Processor</key>
             <string>EndOfCheckPhase</string>
-            <key>Comment</key>
-            <string>End new version phase.</string>
-        </dict>
-        <dict>
-            <key>Processor</key>
-            <string>Unarchiver</string>
-            <key>Arguments</key>
-            <dict>
-                <key>archive_path</key>
-                <string>%pathname%</string>
-                <key>destination_path</key>
-                <string>%RECIPE_CACHE_DIR%/Scripts</string>
-                <key>purge_destination</key>
-                <true/>
-            </dict>
-        </dict>
-        <dict>
-            <key>Processor</key>
-            <string>FileFinder</string>
-            <key>Arguments</key>
-            <dict>
-                <key>pattern</key>
-                <string>%RECIPE_CACHE_DIR%/Scripts/Zscaler-osx-*-installer.app</string>
-            </dict>
         </dict>
         <dict>
             <key>Processor</key>
@@ -60,9 +40,13 @@
             <key>Arguments</key>
             <dict>
                 <key>input_path</key>
-                <string>%found_filename%</string>
-                <key>requirement</key>
-                <string>identifier "com.zscaler.installer" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = PCBCQZJ7S7</string>
+                <string>%pathname%</string>
+                <key>expected_authority_names</key>
+                <array>
+                    <string>Developer ID Installer: Zscaler inc (PCBCQZJ7S7)</string>
+                    <string>Developer ID Certification Authority</string>
+                    <string>Apple Root CA</string>
+                </array>
             </dict>
         </dict>
     </array>

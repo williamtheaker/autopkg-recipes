@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
     <key>Description</key>
-    <string>Downloads the requested version of Zscaler, packages, and installs it.</string>
+    <string>Downloads the requested version of Zscaler and installs it.</string>
     <key>Identifier</key>
     <string>com.github.williamtheaker.autopkg.install.Zscaler</string>
     <key>Input</key>
@@ -14,7 +14,7 @@
     <key>MinimumVersion</key>
     <string>1.0.0</string>
     <key>ParentRecipe</key>
-    <string>com.github.williamtheaker.autopkg.pkg.Zscaler</string>
+    <string>com.github.williamtheaker.autopkg.download.Zscaler</string>
     <key>Process</key>
     <array>
         <dict>
@@ -23,7 +23,7 @@
             <key>Arguments</key>
             <dict>
                <key>pkg_path</key>
-               <string>%pkg_path%</string>
+               <string>%pathname%</string>
             </dict>
         </dict>
     </array>
