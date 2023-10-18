@@ -58,6 +58,7 @@ from pkg_resources import parse_version as version
 
 CINC_VERSION = "%version%"
 CINC_PATH = "/opt/cinc/bin/cinc-client"
+CINC_SYMLINK = "/usr/local/bin/cinc-client"
 LOG_PATH = "/var/log/cinc/client.log"
 RUBY_PATH = "/opt/cinc/embedded/bin/ruby"
 RECEIPT = "com.cinc-project.pkg.cinc"
@@ -75,7 +76,7 @@ def arm64():
 
 
 def installed():
-    for path in [CINC_PATH, RUBY_PATH]:
+    for path in [CINC_PATH, CINC_SYMLINK, RUBY_PATH]:
         if not os.path.exists(path):
             return False
     return True
