@@ -1,6 +1,5 @@
 Description: Downloads the latest version of CXone ScreenAgent for macOS and imports into Munki.
-Identifier: com.github.williamtheaker.autopkg.munki.ScreenAgent
-ParentRecipe: com.github.williamtheaker.autopkg.download.ScreenAgent
+Identifier: com.github.olsonjp.autopkg.munki.ScreenAgent
 MinimumVersion: "2.3" # First AutoPkg version with YAML recipe support
 
 Input:
