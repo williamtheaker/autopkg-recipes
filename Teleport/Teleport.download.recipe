@@ -19,9 +19,9 @@
         <key>Arguments</key>
         <dict>
             <key>url</key>
-            <string>https://goteleport.com/download/</string>
+            <string>https://goteleport.com/docs/installation/#macos</string>
             <key>re_pattern</key>
-            <string>https:\/\/cdn.teleport.dev\/teleport-([\d\.]*).pkg</string>
+            <string>teleport-([0-9]+(\.[0-9]+)+).pkg</string>
             <key>result_output_var_name</key>
             <string>version</string>
         </dict>
