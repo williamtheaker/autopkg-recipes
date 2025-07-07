@@ -19,9 +19,14 @@
         <key>Arguments</key>
         <dict>
             <key>url</key>
-            <string>https://goteleport.com/docs/installation/#macos</string>
+            <string>https://goteleport.com/download/?os=mac</string>
+            <key>request_headers</key>
+                <dict>
+                    <key>user-agent</key>
+                    <string>Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.4.1 Safari/605.1.15</string>
+                </dict>
             <key>re_pattern</key>
-            <string>teleport-([0-9]+(\.[0-9]+)+).pkg</string>
+            <string>publicUrl":"https://cdn.teleport.dev/teleport-([0-9]+(\.[0-9]+)+).pkg"</string>
             <key>result_output_var_name</key>
             <string>version</string>
         </dict>
